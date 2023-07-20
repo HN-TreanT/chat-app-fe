@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import "react-notifications-component/dist/theme.css";
 import { store, persistor } from "./redux";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import RouterLinks from "./const/router_link";
 import { ReactNotifications } from "react-notifications-component";
 import LoginPage from "./page/login-page/loginPage";
@@ -20,26 +20,28 @@ function App() {
       <ReactNotifications />
 
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <AppContext.Provider value={{ socket, messages, setMessages }}>
-            <div className="MainApp">
-              <div className="MainContent">
-                <div className="ContentPage">
-                  <Routes>
-                    <Route path={RouterLinks.LOGIN_PAGE} element={<LoginPage />} />
-                    <Route path={RouterLinks.REGISTER_PAGE} element={<RegisterPage />} />
-                    <Route
-                      path={RouterLinks.HOME_PAGE}
-                      element={<AuthorizationComponent element={<HomePage />} />}
-                    />
-                    <Route path="/video-call/:roomId" element={<Room />} />
-                    <Route path={RouterLinks.LOGIN_GG} element={<LoginGGFB />} />
-                  </Routes>
+        <BrowserRouter>
+          <PersistGate loading={null} persistor={persistor}>
+            <AppContext.Provider value={{ socket, messages, setMessages }}>
+              <div className="MainApp">
+                <div className="MainContent">
+                  <div className="ContentPage">
+                    <Routes>
+                      <Route path={RouterLinks.LOGIN_PAGE} element={<LoginPage />} />
+                      <Route path={RouterLinks.REGISTER_PAGE} element={<RegisterPage />} />
+                      <Route
+                        path={RouterLinks.HOME_PAGE}
+                        element={<AuthorizationComponent element={<HomePage />} />}
+                      />
+                      <Route path="/video-call/:roomId" element={<Room />} />
+                      <Route path={RouterLinks.LOGIN_GG} element={<LoginGGFB />} />
+                    </Routes>
+                  </div>
                 </div>
               </div>
-            </div>
-          </AppContext.Provider>
-        </PersistGate>
+            </AppContext.Provider>
+          </PersistGate>
+        </BrowserRouter>
       </Provider>
     </>
   );
