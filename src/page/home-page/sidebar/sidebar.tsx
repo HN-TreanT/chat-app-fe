@@ -268,31 +268,33 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
         {loadingFriend ? <Spin /> : ""}
       </div>
       {isMobile ? (
-        <div className="footer-sidebar">
-          <div>
-            <Avatar
-              onClick={handleOpenDrawer}
-              style={{ backgroundColor: "rgba(148, 146, 146, 0.116)" }}
-              src={me?.avatarImage}
-              size={33}
-            >
-              {me?.displayName ? me?.displayName.charAt(0).toUpperCase() : "A"}{" "}
-            </Avatar>
-            <span
-              style={{ fontSize: "0.6rem", fontWeight: 550, marginLeft: "7px", color: "white" }}
-            >
-              {me?.displayName}
-            </span>
-          </div>
-          <div className="icon-logout">
-            <FontAwesomeIcon
-              onClick={() => {
-                localStorage.clear();
-                navigate(RouterLinks.LOGIN_PAGE);
-              }}
-              style={{ fontSize: "1rem", color: "rgba(255, 255, 255, 0.596)" }}
-              icon={faArrowRightFromBracket}
-            />
+        <div className="container-footer-sidebar">
+          <div className="footer-sidebar">
+            <div>
+              <Avatar
+                onClick={handleOpenDrawer}
+                style={{ backgroundColor: "rgba(148, 146, 146, 0.116)" }}
+                src={me?.avatarImage}
+                size={33}
+              >
+                {me?.displayName ? me?.displayName.charAt(0).toUpperCase() : "A"}{" "}
+              </Avatar>
+              <span
+                style={{ fontSize: "0.6rem", fontWeight: 550, marginLeft: "7px", color: "white" }}
+              >
+                {me?.displayName}
+              </span>
+            </div>
+            <div className="icon-logout">
+              <FontAwesomeIcon
+                onClick={() => {
+                  localStorage.clear();
+                  navigate(RouterLinks.LOGIN_PAGE);
+                }}
+                style={{ fontSize: "1rem", color: "rgba(255, 255, 255, 0.596)" }}
+                icon={faArrowRightFromBracket}
+              />
+            </div>
           </div>
         </div>
       ) : (

@@ -53,7 +53,7 @@ const HomePage: React.FC = () => {
   const handleBackListFriend = () => {
     if (!loading) {
       setColSpan(24);
-      setSpanConversation(17);
+      setSpanConversation(0);
       dispatch(actions.AuthActions.setUserSelected({}));
     }
   };
