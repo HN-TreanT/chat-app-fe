@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import "react-notifications-component/dist/theme.css";
 import { store, persistor } from "./redux";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import RouterLinks from "./const/router_link";
 import { ReactNotifications } from "react-notifications-component";
 import LoginPage from "./page/login-page/loginPage";
@@ -26,15 +26,15 @@ function App() {
               <div className="MainContent">
                 <div className="ContentPage">
                   <Routes>
-                    {/* <Route path="/" element={<Navigate to={RouterLinks.LOGIN_PAGE} />} /> */}
-                    <Route
-                      path={RouterLinks.HOME_PAGE}
-                      element={<AuthorizationComponent element={<HomePage />} />}
-                    />
+                    <Route path="/" element={<Navigate to={RouterLinks.LOGIN_PAGE} />} />
                     <Route path={RouterLinks.LOGIN_PAGE} element={<LoginPage />} />
                     <Route path={RouterLinks.LOGIN_GG} element={<LoginGGFB />} />
                     <Route path={RouterLinks.REGISTER_PAGE} element={<RegisterPage />} />
                     <Route path="/video-call/:roomId" element={<Room />} />
+                    <Route
+                      path={RouterLinks.HOME_PAGE}
+                      element={<AuthorizationComponent element={<HomePage />} />}
+                    />
                   </Routes>
                 </div>
               </div>
