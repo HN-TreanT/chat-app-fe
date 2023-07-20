@@ -9,6 +9,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
     // justify-content: space-between;
     .header-sider-bar{
        .info-me{
