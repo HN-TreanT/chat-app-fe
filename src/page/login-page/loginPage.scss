@@ -1,0 +1,25 @@
+.login-page{
+       height: 100vh;
+        background-image: url('../../assets/background.png');
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        // background-position: center;
+        .login{
+            background-color: rgba(255,255,255,0.33);
+            box-shadow: 0 8px 32px 0 rgba(6, 137, 197, 0.3);
+            backdrop-filter: blur(3px);
+            padding: 0px 16px 16px 16px;
+            border-radius: 16px;
+            .socialLogin{
+              display: flex;
+              justify-content: center;
+              gap: 24px;
+              color: white;
+              font-size: 1.2rem;
+            }
+        }
+       
+}

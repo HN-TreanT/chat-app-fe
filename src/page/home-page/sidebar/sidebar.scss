@@ -1,0 +1,126 @@
+.sider-bar{
+    // background-color:rgb(19, 19, 36);
+    // background: linear-gradient(180deg, rgb(40,43,54) 0%, rgb(40,43,54) 50%, rgba(40,43,54,0.8) 100%);
+    background-color:  rgb(40,43,54);
+    padding-left:10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    border-right: 1px solid rgba(0, 0, 0, 0.103);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    .header-sider-bar{
+       .info-me{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        .title{
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        .other-function{
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          .icon-footer-sidebar{
+            padding: 7px;
+            color: #0084FF;
+            // font-size: 0.7rem;
+            cursor: pointer;
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.048);
+               border-radius: 50%; 
+            }
+          }
+        }
+        
+       }
+       .input-search{
+         margin-top: 5px;
+         margin-bottom: 5px;
+         border-radius: 20px;
+         background-color: rgba(194, 193, 193, 0.199);
+         caret-color: white;   
+        
+       }
+       .ant-input-affix-wrapper{
+        border: transparent !important;
+       }
+       .ant-input-affix-wrapper-focused{
+        border: none !important;
+       }
+       
+       .ant-input.css-dev-only-do-not-override-14wwjjs{
+        background-color: transparent !important;
+        color: white;
+       }
+      
+    }
+    .list-friend{
+      overflow-y: auto;
+      flex: 1 1 auto;
+       display: flex;
+       flex-direction: column;
+    }
+    .footer-sidebar{
+     
+      padding: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(207, 210, 221, 0.144);
+      .icon-footer-sidebar{
+        padding: 7px;
+        color: #0084FF;
+        // font-size: 0.7rem;
+        cursor: pointer;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.048);
+           border-radius: 50%; 
+        }
+      }
+    }
+   
+}
+
+.icon-search{
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.692);
+ 
+}
+
+.modal-add-user{
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  justify-content: center;
+  .user-search{
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+}
+
+.list-user-send-friend-request{
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  justify-content: center;
+  .content{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+}

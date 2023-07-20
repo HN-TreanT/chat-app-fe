@@ -1,0 +1,33 @@
+.message{
+   display: flex;
+   align-items: center;
+
+   .content{
+    padding: 0.5rem;
+    max-width: 40%;
+    overflow-wrap: break-word;
+    font-size: 0.7rem;
+    border-radius: 1rem;
+    color: white;
+    margin-top:2px;
+
+   }
+
+
+
+}
+.sended {
+   justify-content: flex-end;
+   .content {
+     background-color:var(--color-icon-and-message);
+   }
+
+ }
+.recieved {
+   justify-content: flex-start;
+   .content {
+     color: white;
+     background-color: rgba(148, 146, 146, 0.116);
+   }
+ }
+ 
