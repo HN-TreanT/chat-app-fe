@@ -11,7 +11,7 @@ const Message: React.FC<any> = ({ userSelected, content, position, nextMessage }
             backgroundColor: `${!nextMessage ? "rgba(148, 146, 146, 0.116)" : "transparent"}`,
             marginRight: "3px",
           }}
-          src={userSelected?.avatarImage}
+          src={!nextMessage ? userSelected?.avatarImage : null}
           size={35}
         >
           {userSelected.displayName && !nextMessage

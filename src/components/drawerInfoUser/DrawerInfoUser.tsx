@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Drawer, Row, Col, Button, Typography } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import useAction from "../../redux/useActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { CheckOutlined, HighlightOutlined } from "@ant-design/icons";
+import noImage from "../../assets/360_F_473254957_bxG9yf4ly7OBO5I0O5KABlN930GwaMQz.jpg";
 
 import "./DrawerInfoUser.scss";
 import Avatar from "react-avatar-edit";
@@ -19,9 +20,6 @@ const DrawerInfoUser: React.FC<any> = ({ visible, setVisible }) => {
   const [displayName, setDisplayName] = useState<any>(me?.displayName);
   const [imgCrop, setImgCrop] = useState<any>(false);
   const [storeImage, setStoreImage] = useState<any>([]);
-  // useEffect(() => {
-  //   dispatch(actions.AuthActions.loadUserInfo());
-  // }, [actions.AuthActions, dispatch]);
 
   const onCrop = (view: any) => {
     setImgCrop(view);
@@ -77,18 +75,36 @@ const DrawerInfoUser: React.FC<any> = ({ visible, setVisible }) => {
             <Col span={24}>
               <div className="header-drawer">
                 <div>
-                  <img
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
-                      objectFit: "cover",
-                      border: "4px solid green",
-                      cursor: "pointer",
-                    }}
-                    src={profileImageShow?.length ? profileImageShow : me?.avatarImage}
-                    alt="Preview"
+                  {me?.avatarImage ? (
+                    <img
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        border: "4px solid green",
+                        cursor: "pointer",
+                      }}
+                      src={profileImageShow?.length ? profileImageShow : me?.avatarImage}
+                      alt="Preview"
+                    />
+                  ) : (
+                    <img
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        borderRadius: "50%",
+                        objectFit: "cover",
+                        border: "4px solid green",
+                        cursor: "pointer",
+                      }}
+                      src={profileImageShow?.length ? profileImageShow : noImage}
+                      alt="Preview"
+                    />
+                  )}
+                  <HighlightOutlined
                     onClick={() => setIsOpenModalEdit(true)}
+                    className="icon-edit-img"
                   />
                 </div>
                 <Typography.Paragraph

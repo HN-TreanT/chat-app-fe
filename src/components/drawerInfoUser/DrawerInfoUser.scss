@@ -25,3 +25,11 @@
     justify-content: center;
     align-items: center;
 }
+
+.icon-edit-img{
+   color: #1677ff;
+   cursor: pointer;
+   &:hover{
+    opacity: 0.7;
+   }
+}

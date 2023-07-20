@@ -22,7 +22,7 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const actions = useAction();
-  const loading = useSelector((state: any) => state.state.loadingState);
+  const loadingFriend = useSelector((state: any) => state.state.loadingFriend);
   // const socket = useRef<any>();
   const me = useSelector((state: any) => state.auth.userInfo);
   const friends = useSelector((state: any) => state.auth.listFriend);
@@ -100,8 +100,10 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
   const handleScroll = async (e: any) => {
     if (e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + 1) {
       try {
+        dispatch(actions.StateAction.setLoadingFriend(true));
         let data = await authServices.getFriends(me._id, page, 15, valueSearchFriend);
         // setListFriend([...listfriend, ...data.data]);
+        dispatch(actions.StateAction.setLoadingFriend(false));
         dispatch(actions.AuthActions.loadFriendSuccess([...friends, ...data.data]));
         setPage(page + 1);
       } catch (e: any) {
@@ -149,7 +151,7 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
           ></Input>
           <div className="user-search">
             {/* <Spin /> */}
-            {loading ? (
+            {loadingFriend ? (
               <Spin size="small" />
             ) : (
               <>
@@ -260,7 +262,7 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
             : ""}
         </div>
 
-        {loading ? <Spin /> : ""}
+        {loadingFriend ? <Spin /> : ""}
       </div>
       {isMobile ? (
         <div className="footer-sidebar">

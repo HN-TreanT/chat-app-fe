@@ -2,6 +2,7 @@ import actions from "./actions";
 const initState = {
   loginState: false,
   loadingState: false,
+  loadingFriend: false,
 };
 const StateReducer = (state: any = initState, action: any) => {
   switch (action.type) {
@@ -54,6 +55,13 @@ const StateReducer = (state: any = initState, action: any) => {
         ...state,
         ...{
           acceptCall: action.payload.data,
+        },
+      };
+    case actions.types.LOADING_FRIEND:
+      return {
+        ...state,
+        ...{
+          loadingFriend: action.payload.data,
         },
       };
     default:

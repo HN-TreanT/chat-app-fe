@@ -185,7 +185,6 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
         </div>
       </div>
       <div onScroll={handleScroll} className="chat-message">
-        {loading ? <Spin /> : ""}
         {Array.isArray(messages) && messages.length > 0 ? (
           messages.map((message: any, index) => {
             let nextMessage = false;

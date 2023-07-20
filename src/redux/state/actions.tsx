@@ -9,28 +9,35 @@ const types = {
   REDIRECT_ACTION: "/redirect-action",
   INIT_SOCKET: "/init-socket",
   ACCEPT_CALL: "accept-call",
+  LOADING_FRIEND: "/state/loading-friend",
 };
 
 const action = {
-  loadingState(isLoading: boolean) {
+  loadingState: (isLoading: boolean) => {
     return {
       type: types.IS_LOADING,
       payload: { isLoading },
     };
   },
-  loginState(isLogin: boolean) {
+  setLoadingFriend: (data: any) => {
+    return {
+      type: types.LOADING_FRIEND,
+      payload: { data },
+    };
+  },
+  loginState: (isLogin: boolean) => {
     return {
       type: types.IS_lOGIN,
       payload: { isLogin },
     };
   },
-  selectedMenuItem(isSelected: any) {
+  selectedMenuItem: (isSelected: any) => {
     return {
       type: types.IS_SELECTED_MENU_ITEM,
       payload: { isSelected },
     };
   },
-  keysOpen(keys: any) {
+  keysOpen: (keys: any) => {
     return {
       type: types.KEYS_OPEN,
       payload: { keys },

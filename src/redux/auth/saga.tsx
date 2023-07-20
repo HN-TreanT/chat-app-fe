@@ -37,7 +37,7 @@ function* saga_loadFriends() {
   let userInfo: any = _userInfo;
   let _valueSearchFriend: Promise<any> = yield select((state: any) => state.auth.valueSearchFriend);
   let valueSearchFriend: any = _valueSearchFriend;
-  yield put(stateActions.action.loadingState(true));
+  yield put(stateActions.action.setLoadingFriend(true));
 
   let _friends: Promise<any> = yield authServices.getFriends(
     userInfo._id,
@@ -47,7 +47,7 @@ function* saga_loadFriends() {
   );
   let friends: any = _friends;
   yield put(actions.action.loadFriendSuccess(friends.data));
-  yield put(stateActions.action.loadingState(false));
+  yield put(stateActions.action.setLoadingFriend(false));
 }
 
 function* saga_loadUserInfo() {
