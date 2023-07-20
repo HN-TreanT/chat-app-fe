@@ -26,11 +26,8 @@ function App() {
               <div className="MainContent">
                 <div className="ContentPage">
                   <Routes>
-                    <Route path="/" element={<Navigate to={RouterLinks.LOGIN_PAGE} />} />
                     <Route path={RouterLinks.LOGIN_PAGE} element={<LoginPage />} />
-
                     <Route path={RouterLinks.REGISTER_PAGE} element={<RegisterPage />} />
-
                     <Route
                       path={RouterLinks.HOME_PAGE}
                       element={<AuthorizationComponent element={<HomePage />} />}
