@@ -22,7 +22,7 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const actions = useAction();
-  const loadingFriend = useSelector((state: any) => state.state.loadingFriend);
+  // const loadingFriend = useSelector((state: any) => state.state.loadingFriend);
   // const socket = useRef<any>();
   const me = useSelector((state: any) => state.auth.userInfo);
   const friends = useSelector((state: any) => state.auth.listFriend);
@@ -30,6 +30,7 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
 
   const [page, setPage] = useState(2);
   // const [listfriend, setListFriend] = useState(friends);
+  const [loadingFriend, setLoadingFriend] = useState(false);
   const [isOpenModelAddUser, setIsOpenModelAddUser] = useState(false);
   const [isOpenModelMail, setIsOpenModelMail] = useState(false);
   const [isOpenModelCreateGroup, setIsOpenModelCreateGroup] = useState(false);
@@ -100,10 +101,12 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
   const handleScroll = async (e: any) => {
     if (e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + 1) {
       try {
-        dispatch(actions.StateAction.setLoadingFriend(true));
+        // dispatch(actions.StateAction.setLoadingFriend(true));
+        setLoadingFriend(true);
         let data = await authServices.getFriends(me._id, page, 15, valueSearchFriend);
         // setListFriend([...listfriend, ...data.data]);
-        dispatch(actions.StateAction.setLoadingFriend(false));
+        // dispatch(actions.StateAction.setLoadingFriend(false));
+        setLoadingFriend(false);
         dispatch(actions.AuthActions.loadFriendSuccess([...friends, ...data.data]));
         setPage(page + 1);
       } catch (e: any) {
