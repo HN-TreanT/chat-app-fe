@@ -1,0 +1,9 @@
+version: 1
+builds:
+  - name: react-build
+    env: node
+    buildCommand: npm run build
+
+staticSites:
+  - name: my-react-app
+    dir: build
