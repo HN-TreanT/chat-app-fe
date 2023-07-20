@@ -26,7 +26,7 @@ const LoginGGFB: React.FC<any> = () => {
           localStorage.setItem("username", message?.data?.username);
           dispatch(actions.AuthActions.setuserInfo(message.data));
           dispatch(actions.StateAction.loginState(true));
-          navigate(RouterLinks.HOME_PAGE);
+          return navigate(RouterLinks.HOME_PAGE);
         } else {
           return navigate(RouterLinks.LOGIN_PAGE);
         }

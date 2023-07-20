@@ -42,8 +42,10 @@
          margin-top: 5px;
          margin-bottom: 5px;
          border-radius: 20px;
-         background-color: rgba(194, 193, 193, 0.199);
+          background-color: rgba(194, 193, 193, 0.199);
+         
          caret-color: white;   
+         //border: transparent !important;
         
        }
        .ant-input-affix-wrapper{
@@ -52,11 +54,15 @@
        .ant-input-affix-wrapper-focused{
         border: none !important;
        }
-       
-       .ant-input.css-dev-only-do-not-override-14wwjjs{
+       .ant-input {
         background-color: transparent !important;
+        
+       }
+       .css-dev-only-do-not-override-14wwjjs{
         color: white;
        }
+       
+    
       
     }
     .list-friend{
