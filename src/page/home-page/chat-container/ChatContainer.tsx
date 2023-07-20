@@ -50,6 +50,7 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
       try {
         if (!isScrollTop) {
           const data = await messageService.getMessages(conversation._id, 1, 40);
+
           setMessages(data?.data ? data.data : []);
         }
       } catch (e) {
@@ -57,7 +58,7 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
       }
     }
     getMessages();
-  }, [conversation._id, isScrollTop, setMessages]);
+  }, [actions.StateAction, conversation._id, dispatch, isScrollTop, setMessages]);
   function scrollToBottom() {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }
@@ -79,7 +80,9 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
 
   socket.off("start_chat").on("start_chat", async (data: any) => {
     dispatch(actions.AuthActions.setConversation(data));
+    dispatch(actions.StateAction.loadingState(true));
     const messages = await messageService.getMessages(data._id, 1, 40);
+    dispatch(actions.StateAction.loadingState(false));
     setMessages(messages.data);
     setPage(2);
     scrollToBottom();
@@ -210,6 +213,7 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
             <h4 className="title-empty-chat">{`Hãy gửi lời chào đến ${userSelected?.displayName}`}</h4>
           </div>
         )}
+        {loading ? <Spin /> : ""}
         <div ref={messageEndRef}></div>
       </div>
       <InputChat socket={socket} />

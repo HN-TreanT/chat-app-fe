@@ -18,6 +18,7 @@ const HomePage: React.FC = () => {
   const [spanLeftSidbar, setSpanLeftSideBar] = useState(window.innerWidth < 768 ? 0 : 1);
   const me = useSelector((state: any) => state.auth.userInfo);
   const { socket, setMessages } = useContext(AppContext);
+  const loading = useSelector((state: any) => state.state.loadingState);
 
   useEffect(() => {
     socket.io.opts.query = { username: me?.username };
@@ -50,9 +51,11 @@ const HomePage: React.FC = () => {
     };
   }, []);
   const handleBackListFriend = () => {
-    setColSpan(24);
-    setSpanConversation(17);
-    dispatch(actions.AuthActions.setUserSelected({}));
+    if (!loading) {
+      setColSpan(24);
+      setSpanConversation(17);
+      dispatch(actions.AuthActions.setUserSelected({}));
+    }
   };
   const handleDetailConversation = (e: any) => {
     if (window.innerWidth < 768) {
