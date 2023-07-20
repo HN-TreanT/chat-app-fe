@@ -28,13 +28,15 @@ function App() {
                   <Routes>
                     <Route path="/" element={<Navigate to={RouterLinks.LOGIN_PAGE} />} />
                     <Route path={RouterLinks.LOGIN_PAGE} element={<LoginPage />} />
-                    <Route path={RouterLinks.LOGIN_GG} element={<LoginGGFB />} />
+
                     <Route path={RouterLinks.REGISTER_PAGE} element={<RegisterPage />} />
-                    <Route path="/video-call/:roomId" element={<Room />} />
+
                     <Route
                       path={RouterLinks.HOME_PAGE}
                       element={<AuthorizationComponent element={<HomePage />} />}
                     />
+                    <Route path="/video-call/:roomId" element={<Room />} />
+                    <Route path={RouterLinks.LOGIN_GG} element={<LoginGGFB />} />
                   </Routes>
                 </div>
               </div>
