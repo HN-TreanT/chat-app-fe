@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useContext, useState } from "react";
 import { AppContext } from "../../../../context/appContext";
 import { useSelector } from "react-redux";
-import { Row, Col, Tooltip } from "antd";
+import { Tooltip } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPhone,
@@ -20,7 +20,6 @@ const Room = () => {
   const [isCalling, setIsCalling] = useState(false);
   const [isOpenCamera, setIsOpenCamera] = useState(true);
   const [isOpenMic, setIsOpenMic] = useState(true);
-  const [colSpan, setColSpan] = useState(12);
   const roomId = useSelector((state) => state.videocall.roomId);
   const { socket } = useContext(AppContext);
   const userVideo = useRef();
@@ -28,24 +27,6 @@ const Room = () => {
   const peerRef = useRef();
   const otherUser = useRef();
   const userStream = useRef();
-
-  useEffect(() => {
-    if (window.innerWidth < 768) {
-      setColSpan(24);
-    }
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setColSpan(24);
-      } else {
-        setColSpan(12);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    // Xóa event listener khi component bị hủy
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then((stream) => {
@@ -196,18 +177,9 @@ const Room = () => {
     partnerVideo.current.srcObject = e.streams[0];
   }
 
+  ///
+
   const handleCameraSlash = () => {
-    // if (isOpenCamera) {
-    //   if (userStream.current) {
-    //     userStream.current.getTracks().forEach((track) => track.stop());
-    //   }
-    // } else {
-    //   if (userStream.current) {
-    //     // userStream.current
-    //     //   .getTracks()
-    //     //   .forEach((track) => peerRef.current.addTrack(track, userStream.current));
-    //   }
-    // }
     setIsOpenCamera(!isOpenCamera);
   };
   const handleMicSlash = () => {
@@ -240,44 +212,37 @@ const Room = () => {
     <div className="video-call">
       <div className="container">
         <div className="content">
-          <Row gutter={[10, 10]}>
-            <Col span={colSpan}>
-              <div className="user-video">
-                <video autoPlay={isOpenCamera} ref={userVideo} />
-              </div>
-            </Col>
-            <Col span={colSpan}>
-              <div className="partner-video">
-                <video autoPlay ref={partnerVideo} />
-              </div>
-            </Col>
-          </Row>
-          <Col span={24}>
-            <div className="button-control">
-              <Tooltip title={`${isOpenCamera ? "Tắt camera" : "Bật camera"}`}>
-                <FontAwesomeIcon
-                  onClick={handleCameraSlash}
-                  className={`icon-control ${isOpenCamera ? "camera" : ""}`}
-                  icon={isOpenCamera ? faVideo : faVideoSlash}
-                />
-              </Tooltip>
-              <Tooltip title={`${isOpenMic ? "Bật mic" : "Tắt mic"}`}>
-                <FontAwesomeIcon
-                  onClick={handleMicSlash}
-                  className={`icon-control ${isOpenMic ? "mic" : ""}`}
-                  icon={isOpenMic ? faMicrophone : faMicrophoneSlash}
-                />
-              </Tooltip>
-              <Tooltip title="Kết thúc cuộc gọi">
-                <FontAwesomeIcon
-                  onClick={handleFinishCall}
-                  className="icon-control"
-                  style={{ backgroundColor: "red", color: "white" }}
-                  icon={faPhone}
-                />
-              </Tooltip>
-            </div>
-          </Col>
+          <div className="partner-video">
+            <video autoPlay ref={partnerVideo} />
+          </div>
+          <div className="user-video">
+            <video autoPlay={isOpenCamera} ref={userVideo} />
+          </div>
+
+          <div className="button-control">
+            <Tooltip title={`${isOpenCamera ? "Tắt camera" : "Bật camera"}`}>
+              <FontAwesomeIcon
+                onClick={handleCameraSlash}
+                className={`icon-control ${isOpenCamera ? "camera" : ""}`}
+                icon={isOpenCamera ? faVideo : faVideoSlash}
+              />
+            </Tooltip>
+            <Tooltip title={`${isOpenMic ? "Bật mic" : "Tắt mic"}`}>
+              <FontAwesomeIcon
+                onClick={handleMicSlash}
+                className={`icon-control ${isOpenMic ? "mic" : ""}`}
+                icon={isOpenMic ? faMicrophone : faMicrophoneSlash}
+              />
+            </Tooltip>
+            <Tooltip title="Kết thúc cuộc gọi">
+              <FontAwesomeIcon
+                onClick={handleFinishCall}
+                className="icon-control"
+                style={{ backgroundColor: "red", color: "white" }}
+                icon={faPhone}
+              />
+            </Tooltip>
+          </div>
         </div>
       </div>
     </div>
