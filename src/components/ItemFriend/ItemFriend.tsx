@@ -13,7 +13,7 @@ const ItemFriend: React.FC<any> = ({ friend, handleDetailConversation }) => {
         onClick={() => handleDetailConversation(friend)}
         title={`${friend?.displayName}`}
         description={"Say hello!"}
-        avatarUrl={friend?.avatar}
+        avatarUrl={friend?.avatarImage}
         avatarUsername={friend?.username}
         avatarStyle={{
           boxShadow:
