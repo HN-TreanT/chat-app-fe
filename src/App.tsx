@@ -13,6 +13,7 @@ import { AuthorizationComponent } from "./components/authorization/Authorization
 import { socket, AppContext } from "./context/appContext";
 import Room from "./page/home-page/chat-container/RoomVideoCall/Room";
 import LoginGGFB from "./page/login-gg-fb/LoginGGFB";
+import VideoCall from "./page/home-page/chat-container/RoomVideoCall/VideoCall";
 function App() {
   const [messages, setMessages] = useState([]);
   return (
@@ -35,6 +36,10 @@ function App() {
                       />
                       <Route path="/video-call/:roomId" element={<Room />} />
                       <Route path={RouterLinks.LOGIN_GG} element={<LoginGGFB />} />
+                      <Route
+                        path="/video"
+                        element={<AuthorizationComponent element={<VideoCall />} />}
+                      />
                     </Routes>
                   </div>
                 </div>

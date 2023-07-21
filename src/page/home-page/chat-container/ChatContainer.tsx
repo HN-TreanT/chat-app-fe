@@ -105,11 +105,13 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
     });
     dispatch(actions.VideoCallActions.setUserCalling(userSelected));
     dispatch(actions.VideoCallActions.setRoomId(id));
-    return navigate(`/video-call/${id}`);
+    // return navigate(`/video-call/${id}`);
+    return navigate("/video");
   };
 
   const handleAcceptCall = () => {
-    return navigate(`/video-call/${roomId}`);
+    // return navigate(`/video-call/${roomId}`);
+    return navigate("/video");
   };
 
   return (
