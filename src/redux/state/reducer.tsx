@@ -3,6 +3,7 @@ const initState = {
   loginState: false,
   loadingState: false,
   loadingFriend: false,
+  conversationORsidebar: "sidebar",
 };
 const StateReducer = (state: any = initState, action: any) => {
   switch (action.type) {
@@ -62,6 +63,20 @@ const StateReducer = (state: any = initState, action: any) => {
         ...state,
         ...{
           loadingFriend: action.payload.data,
+        },
+      };
+    case actions.types.SPAN:
+      return {
+        ...state,
+        ...{
+          span: action.payload.data,
+        },
+      };
+    case actions.types.CONVERSATION_OR_SIDEBAR:
+      return {
+        ...state,
+        ...{
+          conversationORsidebar: action.payload.data,
         },
       };
     default:

@@ -51,7 +51,6 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
       try {
         if (!isScrollTop) {
           const data = await messageService.getMessages(conversation._id, 1, 40);
-
           setMessages(data?.data ? data.data : []);
         }
       } catch (e) {
@@ -205,7 +204,16 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
         ) : (
           ""
         )}
-        {Array.isArray(messages) && messages.length > 0 ? (
+        {loading ? (
+          <Spin
+            style={{
+              position: "relative",
+              top: "0",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          />
+        ) : Array.isArray(messages) && messages.length > 0 ? (
           messages.map((message: any, index) => {
             let nextMessage = false;
             if (messages[index + 1]?.to !== userInfo?._id) {
@@ -224,23 +232,13 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
               />
             );
           })
-        ) : messages.length <= 0 ? (
-          <div className="empty-message">
-            <Image className="icon-hello" src={imgHello} preview={false} />
-            <h4 className="title-empty-chat">{`Hãy gửi lời chào đến ${userSelected?.displayName}`}</h4>
-          </div>
         ) : (
-          <Spin
-            style={{
-              position: "relative",
-              top: "0",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-            }}
-          />
+          ""
+          // <div className="empty-message">
+          //   <Image className="icon-hello" src={imgHello} preview={false} />
+          //   <h4 className="title-empty-chat">{`Hãy gửi lời chào đến ${userSelected?.displayName}`}</h4>
+          // </div>
         )}
-        {/* {loading ? <Spin /> : ""} */}
-
         <div ref={messageEndRef}></div>
       </div>
       <InputChat socket={socket} />

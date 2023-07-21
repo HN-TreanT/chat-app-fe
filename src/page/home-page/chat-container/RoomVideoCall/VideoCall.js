@@ -17,11 +17,13 @@ const VideoCall = () => {
       userCalling: userCalling._id,
     });
     navigate(RouterLinks.HOME_PAGE);
+    window.location.reload();
   };
   socket.off("finish-success").on("finish-success", (data) => {
     if (data === "success") {
       navigate(RouterLinks.HOME_PAGE);
       handleLeaveRoom();
+      window.location.reload();
     }
   });
   let myMeeting = async (element) => {

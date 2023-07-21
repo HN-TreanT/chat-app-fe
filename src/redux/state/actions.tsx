@@ -10,6 +10,8 @@ const types = {
   INIT_SOCKET: "/init-socket",
   ACCEPT_CALL: "accept-call",
   LOADING_FRIEND: "/state/loading-friend",
+  SPAN: "/state/span",
+  CONVERSATION_OR_SIDEBAR: "/state/connection-or-sidebar",
 };
 
 const action = {
@@ -63,6 +65,18 @@ const action = {
   acceptCall: (data: any) => {
     return {
       type: types.ACCEPT_CALL,
+      payload: { data },
+    };
+  },
+  setSpan: (data: any) => {
+    return {
+      type: types.SPAN,
+      payload: { data },
+    };
+  },
+  setConversationOrSidebar: (data: any) => {
+    return {
+      type: types.CONVERSATION_OR_SIDEBAR,
       payload: { data },
     };
   },
