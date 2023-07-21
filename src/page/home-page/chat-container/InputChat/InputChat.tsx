@@ -47,9 +47,6 @@ const InputChat: React.FC<any> = () => {
           <FontAwesomeIcon className="icon" icon={faImage} />
         </Tooltip>
         <input
-          onFocus={(e: any) => {
-            e.preventDefault();
-          }}
           onKeyDown={(e: any) => {
             if (e.key === "Enter") {
               handleSendMessage();

@@ -222,7 +222,7 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
               />
             );
           })
-        ) : messages.length < 0 ? (
+        ) : messages.length <= 0 ? (
           <div className="empty-message">
             <Image className="icon-hello" src={imgHello} preview={false} />
             <h4 className="title-empty-chat">{`Hãy gửi lời chào đến ${userSelected?.displayName}`}</h4>
