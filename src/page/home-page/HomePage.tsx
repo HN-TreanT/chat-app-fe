@@ -15,9 +15,6 @@ const HomePage: React.FC = () => {
   const [visibleDrawer, setVisibleDrawer] = useState<any>(false);
   const span = useSelector((state: any) => state.state.span);
   const conversationORsidebar = useSelector((state: any) => state.state.conversationORsidebar);
-  // const [colSpan, setColSpan] = useState(window.innerWidth < 768 ? 24 : 6);
-  // const [spanConversation, setSpanConversation] = useState(window.innerWidth < 768 ? 24 : 17);
-  // const [spanLeftSidbar, setSpanLeftSideBar] = useState(window.innerWidth < 768 ? 0 : 1);
   const me = useSelector((state: any) => state.auth.userInfo);
   const { socket, setMessages } = useContext(AppContext);
   const loading = useSelector((state: any) => state.state.loadingState);
@@ -49,9 +46,6 @@ const HomePage: React.FC = () => {
           spanLeftSidbar: 0,
         })
       );
-      // setColSpan(24);
-      // setSpanLeftSideBar(0);
-      // setSpanConversation(0);
     }
     if (window.innerHeight < 768 && conversationORsidebar === "conversation") {
       dispatch(
@@ -72,9 +66,6 @@ const HomePage: React.FC = () => {
             spanLeftSidbar: 0,
           })
         );
-        // setColSpan(24);
-        // setSpanLeftSideBar(0);
-        // setSpanConversation(0);
       } else {
         dispatch(
           actions.StateAction.setSpan({
@@ -83,9 +74,6 @@ const HomePage: React.FC = () => {
             spanLeftSidbar: 1,
           })
         );
-        // setSpanLeftSideBar(1);
-        // setColSpan(6);
-        // setSpanConversation(17);
       }
     };
     // Gọi hàm handleResize khi kích thước màn hình thay đổi
@@ -119,8 +107,6 @@ const HomePage: React.FC = () => {
           spanLeftSidbar: 0,
         })
       );
-      // setColSpan(0);
-      // setSpanConversation(24);
     }
     dispatch(actions.StateAction.setConversationOrSidebar("conversation"));
     setMessages([]);
@@ -140,25 +126,6 @@ const HomePage: React.FC = () => {
     <div className="home-page">
       <DrawerInfoUser visible={visibleDrawer} setVisible={setVisibleDrawer} />
       <Row gutter={[0, 0]}>
-        {/* <Col span={spanLeftSidbar}>
-          <LeftSidebar handleOpenDrawer={handleOpenDrawer} />
-        </Col>
-        <Col span={colSpan}>
-          <Sidebar
-            handleOpenDrawer={handleOpenDrawer}
-            isMobile={window.innerWidth < 768}
-            handleDetailConversation={handleDetailConversation}
-            socket={socket}
-          />
-        </Col>
-
-        <Col span={spanConversation}>
-          <ChatContainer
-            handleBackListFriend={handleBackListFriend}
-            isMobile={window.innerWidth < 768}
-            socket={socket}
-          />
-        </Col> */}
         <Col span={span?.spanLeftSidbar}>
           <LeftSidebar handleOpenDrawer={handleOpenDrawer} />
         </Col>
