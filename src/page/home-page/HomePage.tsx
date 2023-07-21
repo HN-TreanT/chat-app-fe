@@ -34,6 +34,7 @@ const HomePage: React.FC = () => {
         })
       );
     }
+    console.log("ok");
     if (
       window.innerWidth < 768 &&
       (conversationORsidebar === "sidebar" || !conversationORsidebar)
