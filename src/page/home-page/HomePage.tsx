@@ -28,6 +28,15 @@ const HomePage: React.FC = () => {
     socket.connect();
   }, [me?.username, socket]);
   useEffect(() => {
+    if (window.innerHeight > 768) {
+      dispatch(
+        actions.StateAction.setSpan({
+          colSpan: 6,
+          spanConversation: 17,
+          spanLeftSidbar: 1,
+        })
+      );
+    }
     if (
       window.innerWidth < 768 &&
       (conversationORsidebar === "sidebar" || !conversationORsidebar)
