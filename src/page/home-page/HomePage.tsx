@@ -56,32 +56,32 @@ const HomePage: React.FC = () => {
         })
       );
     }
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 768) {
-        dispatch(
-          actions.StateAction.setSpan({
-            colSpan: 24,
-            spanConversation: 0,
-            spanLeftSidbar: 0,
-          })
-        );
-      } else {
-        dispatch(
-          actions.StateAction.setSpan({
-            colSpan: 6,
-            spanConversation: 17,
-            spanLeftSidbar: 1,
-          })
-        );
-      }
-    };
-    // Gọi hàm handleResize khi kích thước màn hình thay đổi
-    window.addEventListener("resize", handleResize);
-    // Xóa event listener khi component bị hủy
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    // const handleResize = () => {
+    //   const width = window.innerWidth;
+    //   if (width < 768) {
+    //     dispatch(
+    //       actions.StateAction.setSpan({
+    //         colSpan: 24,
+    //         spanConversation: 0,
+    //         spanLeftSidbar: 0,
+    //       })
+    //     );
+    //   } else {
+    //     dispatch(
+    //       actions.StateAction.setSpan({
+    //         colSpan: 6,
+    //         spanConversation: 17,
+    //         spanLeftSidbar: 1,
+    //       })
+    //     );
+    //   }
+    // };
+    // // Gọi hàm handleResize khi kích thước màn hình thay đổi
+    // window.addEventListener("resize", handleResize);
+    // // Xóa event listener khi component bị hủy
+    // return () => {
+    //   window.removeEventListener("resize", handleResize);
+    // };
   }, [actions.StateAction, conversationORsidebar, dispatch]);
   const handleBackListFriend = () => {
     if (!loading) {
