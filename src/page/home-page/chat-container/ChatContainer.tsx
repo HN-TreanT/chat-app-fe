@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import Message from "../../../components/Message/Message";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faVideo, faArrowLeft, faCancel } from "@fortawesome/free-solid-svg-icons";
-import { Avatar, Badge, Spin, Image, Modal } from "antd";
+import { Avatar, Badge, Spin, Image, Modal, message } from "antd";
 import InputChat from "./InputChat/InputChat";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -24,6 +24,7 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
   const conversation = useSelector((state: any) => state.auth.conversation);
   const loading = useSelector((state: any) => state.state.loadingState);
   const roomId = useSelector((state: any) => state.videocall.roomId);
+  const [loadingMessage, setLoadingMessage] = useState(false);
 
   const [isScrollTop, setIsScrolltop] = useState(false);
   const [isOpenModalAcceptCall, setIsOpenModalAcceptCall] = useState(false);
@@ -66,9 +67,11 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
   const handleScroll = async (e: any) => {
     if (e.target.scrollTop === 0) {
       try {
-        dispatch(actions.StateAction.loadingState(true));
+        // dispatch(actions.StateAction.loadingState(true));
+        setLoadingMessage(true);
         const data = await messageService.getMessages(conversation._id, page, 40);
-        dispatch(actions.StateAction.loadingState(false));
+        // dispatch(actions.StateAction.loadingState(false));
+        setLoadingMessage(false);
         setIsScrolltop(true);
         setMessages([...data.data, ...messages]);
         setPage(page + 1);
@@ -188,6 +191,18 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
         </div>
       </div>
       <div onScroll={handleScroll} className="chat-message">
+        {loadingMessage ? (
+          <Spin
+            style={{
+              position: "relative",
+              top: "0",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          />
+        ) : (
+          ""
+        )}
         {Array.isArray(messages) && messages.length > 0 ? (
           messages.map((message: any, index) => {
             let nextMessage = false;
@@ -207,13 +222,23 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
               />
             );
           })
-        ) : (
+        ) : messages.length < 0 ? (
           <div className="empty-message">
             <Image className="icon-hello" src={imgHello} preview={false} />
             <h4 className="title-empty-chat">{`Hãy gửi lời chào đến ${userSelected?.displayName}`}</h4>
           </div>
+        ) : (
+          <Spin
+            style={{
+              position: "relative",
+              top: "0",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+          />
         )}
-        {loading ? <Spin /> : ""}
+        {/* {loading ? <Spin /> : ""} */}
+
         <div ref={messageEndRef}></div>
       </div>
       <InputChat socket={socket} />

@@ -62,6 +62,7 @@ const HomePage: React.FC = () => {
       setColSpan(0);
       setSpanConversation(24);
     }
+    setMessages([]);
     socket.emit("start_conversation", {
       to: me._id,
       from: e._id,

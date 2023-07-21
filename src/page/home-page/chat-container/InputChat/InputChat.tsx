@@ -58,25 +58,11 @@ const InputChat: React.FC<any> = () => {
           className="input"
           value={message}
         />
-        <Tooltip
-          placement="top"
-          title="Chọn biểu tượng cảm xúc"
-          overlayInnerStyle={{ fontSize: "0.7rem" }}
-          style={{ fontSize: "0.5rem" }}
-        >
-          <div className="emoji">
-            {/* <Picker onEmojiClick={handleEmojiClick} /> */}
-            <FontAwesomeIcon onClick={handleClickShowEmoji} className="icon" icon={faFaceSmile} />
-          </div>
-        </Tooltip>
-        <Tooltip
-          placement="top"
-          title="Nhấn Enter để gửi"
-          overlayInnerStyle={{ fontSize: "0.7rem" }}
-          style={{ fontSize: "0.5rem" }}
-        >
-          <FontAwesomeIcon onClick={handleSendMessage} className="icon" icon={faPaperPlane} />
-        </Tooltip>
+        <div className="emoji">
+          <FontAwesomeIcon onClick={handleClickShowEmoji} className="icon" icon={faFaceSmile} />
+        </div>
+
+        <FontAwesomeIcon onClick={handleSendMessage} className="icon" icon={faPaperPlane} />
       </div>
       {showEmojiInput ? <Picker onEmojiClick={handleEmojiClick} /> : ""}
     </div>

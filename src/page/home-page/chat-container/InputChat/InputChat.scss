@@ -2,8 +2,6 @@
 .input-chat-container{
     .input-chat{
         padding: 10px;
-        // background-color:red;
-       // position: fixed;
         align-items: center;
         justify-content: space-around;
         width: 100%;
@@ -13,12 +11,12 @@
             color: white;
             outline: none;
             border: none;
-           width: 100%; 
-           background-color: rgba(194, 193, 193, 0.116);
-           padding:7px 10px 7px 10px;
-           border-radius: 15px; 
-           width: 100%;
-          caret-color: rgba(255, 255, 255, 0.699);
+            width: 100%; 
+            background-color: rgba(194, 193, 193, 0.116);
+            padding:7px 10px 7px 10px;
+            border-radius: 15px; 
+            width: 100%;
+           caret-color: rgba(255, 255, 255, 0.699);
         }
         
         .icon{
