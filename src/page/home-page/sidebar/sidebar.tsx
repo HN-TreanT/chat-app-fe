@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import useDebounce from "../../../hooks/useDebounce";
 
 const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpenDrawer }) => {
-  const { socket } = useContext(AppContext);
+  const { socket, setMessages } = useContext(AppContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const actions = useAction();
@@ -289,6 +289,9 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
               <FontAwesomeIcon
                 onClick={() => {
                   localStorage.clear();
+                  setMessages([]);
+                  // dispatch(actions.AuthActions.setUserSelected({}));
+                  // dispatch(actions.AuthActions.set)
                   navigate(RouterLinks.LOGIN_PAGE);
                 }}
                 style={{ fontSize: "1rem", color: "rgba(255, 255, 255, 0.596)" }}

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Button, Divider, Form, Input, Typography } from "antd";
 import { Link } from "react-router-dom";
 import {
@@ -10,12 +10,11 @@ import {
 import "./loginPage.scss";
 import RouterLinks from "../../const/router_link";
 import useAction from "../../redux/useActions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { authServices } from "../../utils/services/authService";
 import { notification } from "../../components/notification";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/appContext";
-import { io } from "socket.io-client";
 import { serverConfig } from "../../const";
 const LoginPage: React.FC = () => {
   const { socket } = useContext(AppContext);

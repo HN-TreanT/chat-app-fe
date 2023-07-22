@@ -19,7 +19,6 @@ function App() {
   return (
     <>
       <ReactNotifications />
-
       <Provider store={store}>
         <BrowserRouter>
           <PersistGate loading={null} persistor={persistor}>
