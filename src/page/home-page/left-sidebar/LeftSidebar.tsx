@@ -6,12 +6,16 @@ import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import "./LeftSidebar.scss";
 import RouterLinks from "../../../const/router_link";
 import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../../context/appContext";
 
 const LeftSidebar: React.FC<any> = ({ handleOpenDrawer }) => {
+  const { setMessages } = useContext(AppContext);
   const navigate = useNavigate();
   const me = useSelector((state: any) => state.auth.userInfo);
   const handleLogout = () => {
+    setMessages([]);
     localStorage.clear();
+    window.location.reload();
     navigate(RouterLinks.LOGIN_PAGE);
   };
   return (

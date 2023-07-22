@@ -25,7 +25,7 @@ const HomePage: React.FC = () => {
     socket.connect();
   }, [me?.username, socket]);
   useEffect(() => {
-    if (window.innerHeight > 768) {
+    if (window.innerWidth > 768) {
       dispatch(
         actions.StateAction.setSpan({
           colSpan: 6,
@@ -47,7 +47,7 @@ const HomePage: React.FC = () => {
         })
       );
     }
-    if (window.innerHeight < 768 && conversationORsidebar === "conversation") {
+    if (window.innerWidth < 768 && conversationORsidebar === "conversation") {
       dispatch(
         actions.StateAction.setSpan({
           colSpan: 0,

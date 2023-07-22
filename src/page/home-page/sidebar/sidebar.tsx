@@ -14,8 +14,9 @@ import useAction from "../../../redux/useActions";
 import "./sidebar.scss";
 import { AppContext } from "../../../context/appContext";
 import RouterLinks from "../../../const/router_link";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import useDebounce from "../../../hooks/useDebounce";
+import { serverConfig } from "../../../const";
 
 const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpenDrawer }) => {
   const { socket, setMessages } = useContext(AppContext);
@@ -113,6 +114,13 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
         console.log(e);
       }
     }
+  };
+
+  const handleLogout = () => {
+    setMessages([]);
+    localStorage.clear();
+    window.location.reload();
+    navigate(RouterLinks.LOGIN_PAGE);
   };
   return (
     <div className="sider-bar">
@@ -287,13 +295,7 @@ const Sidebar: React.FC<any> = ({ handleDetailConversation, isMobile, handleOpen
             </div>
             <div className="icon-logout">
               <FontAwesomeIcon
-                onClick={() => {
-                  localStorage.clear();
-                  setMessages([]);
-                  // dispatch(actions.AuthActions.setUserSelected({}));
-                  // dispatch(actions.AuthActions.set)
-                  navigate(RouterLinks.LOGIN_PAGE);
-                }}
+                onClick={handleLogout}
                 style={{ fontSize: "1rem", color: "rgba(255, 255, 255, 0.596)" }}
                 icon={faArrowRightFromBracket}
               />

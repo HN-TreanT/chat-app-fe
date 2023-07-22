@@ -23,7 +23,7 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
   const userSelected = useSelector((state: any) => state.auth.userSelected);
   const conversation = useSelector((state: any) => state.auth.conversation);
   const loading = useSelector((state: any) => state.state.loadingState);
-  const roomId = useSelector((state: any) => state.videocall.roomId);
+
   const [loadingMessage, setLoadingMessage] = useState(false);
 
   const [isScrollTop, setIsScrolltop] = useState(false);
@@ -169,7 +169,9 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
             />
           </Badge>
           <div className="text-status">
-            <div style={{ fontSize: "0.7rem", fontWeight: 550 }}>{userSelected?.displayName}</div>
+            <div style={{ fontSize: "0.7rem", fontWeight: 550 }}>
+              {userSelected?.displayName ? userSelected.displayName : "Chọn cuộc hội thoại"}
+            </div>
             <div
               style={{
                 fontSize: "0.6rem",
