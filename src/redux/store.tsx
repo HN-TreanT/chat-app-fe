@@ -16,7 +16,6 @@ import rootSaga from "../redux/sagas";
 // const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
-
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;

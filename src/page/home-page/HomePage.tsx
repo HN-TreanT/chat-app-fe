@@ -83,7 +83,7 @@ const HomePage: React.FC = () => {
       );
     }
     dispatch(actions.StateAction.setConversationOrSidebar("conversation"));
-    setMessages([]);
+    // setMessages([]);
     socket.emit("start_conversation", {
       to: me._id,
       from: e._id,
