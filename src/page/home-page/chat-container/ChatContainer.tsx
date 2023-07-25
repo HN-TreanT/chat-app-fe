@@ -58,7 +58,7 @@ const ChatContainer: React.FC<any> = ({ handleBackListFriend, isMobile }) => {
       }
     }
     getMessages();
-  }, [actions.StateAction, conversation._id, dispatch, isScrollTop, setMessages]);
+  }, [conversation._id, dispatch, isScrollTop, setMessages]);
   function scrollToBottom() {
     messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }
