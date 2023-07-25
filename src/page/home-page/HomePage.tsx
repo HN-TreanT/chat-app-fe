@@ -87,6 +87,7 @@ const HomePage: React.FC = () => {
       to: me._id,
       from: e._id,
     });
+    setMessages([]);
     dispatch(actions.AuthActions.setUserSelected(e));
   };
 
